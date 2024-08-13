@@ -68,7 +68,6 @@ class AppTheme {
           bodyColor: colorScheme.onSurface,
           displayColor: colorScheme.onSurface,
         ),
-        scaffoldBackgroundColor: colorScheme.background,
         canvasColor: colorScheme.surface,
       );
 
