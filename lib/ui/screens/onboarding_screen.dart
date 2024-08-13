@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mars_rover_mission/config/router/app_routes_name.dart';
+import 'package:mars_rover_mission/ui/layout/background_layout.dart';
+import 'package:mars_rover_mission/ui/widgets/standard_separator.dart';
+import 'package:mars_rover_mission/ui/widgets/welcome_text.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -9,15 +12,7 @@ class OnboardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final appText = Theme.of(context).textTheme;
     final appColors = Theme.of(context).colorScheme;
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/wallpaper.jpg"),
-          fit: BoxFit.cover,
-        ),
-      ),
+    return BackgroundLayout(
       child: Scaffold(
         backgroundColor: Colors.black.withOpacity(0.6),
         appBar: AppBar(
@@ -40,24 +35,9 @@ class OnboardingScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 40),
-              Text.rich(
-                TextSpan(
-                  text: "Welcome to Mars Rover",
-                  style: appText.headlineLarge,
-                  children: [
-                    TextSpan(
-                      text: "\nMission",
-                      style: TextStyle(
-                        color: appColors.primary,
-                        fontSize: appText.headlineLarge?.fontSize,
-                      ),
-                    ),
-                  ],
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 40),
+              const StandardSeparator(),
+              WelcomeText(appText: appText, appColors: appColors),
+              const StandardSeparator(),
               Text(
                 "You want to be part of the team that explores Mars by sending remote-controlled vehicles to the planet's surface?",
                 style: appText.titleLarge,
