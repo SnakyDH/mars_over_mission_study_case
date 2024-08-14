@@ -68,6 +68,7 @@ class AppTheme {
           bodyColor: colorScheme.onSurface,
           displayColor: colorScheme.onSurface,
         ),
+        appBarTheme: const AppBarTheme(centerTitle: true),
         canvasColor: colorScheme.surface,
       );
 
