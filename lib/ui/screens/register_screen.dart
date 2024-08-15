@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mars_rover_mission/config/router/app_routes_name.dart';
-import 'package:mars_rover_mission/ui/blocs/bloc/username_bloc.dart';
+import 'package:mars_rover_mission/ui/blocs/username/username_bloc.dart';
 import 'package:mars_rover_mission/ui/layout/background_layout.dart';
 import 'package:mars_rover_mission/ui/widgets/name_text_field.dart';
 import 'package:mars_rover_mission/ui/widgets/standard_separator.dart';

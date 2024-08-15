@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mars_rover_mission/ui/blocs/bloc/username_bloc.dart';
+import 'package:mars_rover_mission/ui/blocs/username/username_bloc.dart';
 
 class NameInput extends StatelessWidget {
   const NameInput({
