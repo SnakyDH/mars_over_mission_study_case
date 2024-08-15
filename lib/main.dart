@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mars_rover_mission/config/router/app_router.dart';
 import 'package:mars_rover_mission/config/theme/app_theme.dart';
 import 'package:mars_rover_mission/config/theme/theme_util.dart';
+import 'package:mars_rover_mission/ui/blocs/game_set_up/game_set_up_bloc.dart';
 import 'package:mars_rover_mission/ui/blocs/username/username_bloc.dart';
 
 void main() {
@@ -15,7 +16,10 @@ class BlocProviders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => UsernameBloc())],
+      providers: [
+        BlocProvider(create: (_) => UsernameBloc()),
+        BlocProvider(create: (_) => GameSetUpBloc()),
+      ],
       child: const MainApp(),
     );
   }

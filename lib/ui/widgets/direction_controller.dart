@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mars_rover_mission/domain/entities/direction.dart';
+import 'package:mars_rover_mission/ui/blocs/game_set_up/game_set_up_bloc.dart';
 import 'package:mars_rover_mission/ui/widgets/controller_button.dart';
 
 class DirectionController extends StatelessWidget {
@@ -31,11 +33,17 @@ class DirectionController extends StatelessWidget {
           if (index % 2 == 0) {
             return const SizedBox();
           }
+          final direction = directions.elementAt(index ~/ 2);
           return ControllerButton(
+            onTap: () => context.read<GameSetUpBloc>().add(
+                  DirectionChanged(
+                    direction.name,
+                  ),
+                ),
             child: Text(
-              directions.elementAt(index ~/ 2).name[0],
+              direction.name[0],
               style: TextStyle(
-                color: directions.elementAt(index ~/ 2).color,
+                color: direction.color,
                 fontSize: appText.headlineMedium?.fontSize,
                 //fontWeight: FontWeight.bold,
               ),
