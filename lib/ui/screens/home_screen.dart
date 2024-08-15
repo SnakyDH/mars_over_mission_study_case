@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mars_rover_mission/ui/widgets/app_bar_user.dart';
+import 'package:mars_rover_mission/ui/layout/scaffold_username_app_bar_layout.dart';
 import 'package:mars_rover_mission/ui/widgets/direction_controller.dart';
 import 'package:mars_rover_mission/ui/widgets/standard_separator.dart';
 
@@ -10,9 +10,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final appText = Theme.of(context).textTheme;
 
-    return Scaffold(
-      appBar: const AppBarUser(),
-      body: Center(
+    return ScaffoldUsernameAppBarLayout(
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
