@@ -26,7 +26,7 @@ class AppBarUser extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 10),
+              const SizedBox(width: 20),
               Text(state.username),
             ],
           ),
