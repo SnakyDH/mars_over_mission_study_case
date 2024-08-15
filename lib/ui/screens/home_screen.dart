@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mars_rover_mission/ui/layout/scaffold_username_app_bar_layout.dart';
 import 'package:mars_rover_mission/ui/widgets/direction_controller.dart';
+import 'package:mars_rover_mission/ui/widgets/selected_container.dart';
 import 'package:mars_rover_mission/ui/widgets/standard_separator.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -36,21 +37,8 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             const StandardSeparator(),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 20,
-                ),
-                child: Text(
-                  "Select direction",
-                  style: appText.headlineMedium,
-                ),
-              ),
+            const SelectedContainer(
+              text: "Select the direction",
             ),
             const StandardSeparator(),
             DirectionController(),
