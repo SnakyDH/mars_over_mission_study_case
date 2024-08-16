@@ -23,45 +23,50 @@ class RegisterScreen extends StatelessWidget {
             appBar: AppBar(
               backgroundColor: Colors.transparent,
             ),
-            body: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  WelcomeText(
-                    appText: appText,
-                    appColors: appColors,
-                  ),
-                  const StandardSeparator(),
-                  LayoutBuilder(
-                    builder: (context, constraints) {
-                      if (constraints.maxWidth > 600) {
-                        return const SizedBox(
-                          width: 400,
-                          child: NameInput(),
-                        );
-                      }
-                      return SizedBox(
-                        width: constraints.maxWidth * 0.8,
-                        child: const NameInput(),
-                      );
-                    },
-                  ),
-                  const StandardSeparator(),
-                  Text(
-                    state.username.isNotEmpty ? "Hello, ${state.username}" : "",
-                    style: TextStyle(
-                      color: appColors.tertiary,
-                      fontSize: appText.headlineLarge!.fontSize,
-                      fontFamily: appText.headlineLarge!.fontFamily,
+            body: SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    WelcomeText(
+                      appText: appText,
+                      appColors: appColors,
                     ),
-                  ),
-                  const StandardSeparator(),
-                  FilledButton.icon(
-                    onPressed: () => context.goNamed(AppRoutesName.homeScreen),
-                    icon: const Icon(Icons.rocket_launch),
-                    label: const Text("Start Now"),
-                  ),
-                ],
+                    const StandardSeparator(),
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        if (constraints.maxWidth > 600) {
+                          return const SizedBox(
+                            width: 400,
+                            child: NameInput(),
+                          );
+                        }
+                        return SizedBox(
+                          width: constraints.maxWidth * 0.8,
+                          child: const NameInput(),
+                        );
+                      },
+                    ),
+                    const StandardSeparator(),
+                    Text(
+                      state.username.isNotEmpty
+                          ? "Hello, ${state.username}"
+                          : "",
+                      style: TextStyle(
+                        color: appColors.tertiary,
+                        fontSize: appText.headlineLarge!.fontSize,
+                        fontFamily: appText.headlineLarge!.fontFamily,
+                      ),
+                    ),
+                    const StandardSeparator(),
+                    FilledButton.icon(
+                      onPressed: () =>
+                          context.goNamed(AppRoutesName.homeScreen),
+                      icon: const Icon(Icons.rocket_launch),
+                      label: const Text("Start Now"),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

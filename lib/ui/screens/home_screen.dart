@@ -32,37 +32,39 @@ class HomeScreen extends StatelessWidget {
             context.goNamed(AppRoutesName.gameScreen);
           }
         },
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Send initial position:',
-                style: appText.titleLarge,
-              ),
-              const StandardSeparator(),
-              const Form(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    _PositionInput(type: "X"),
-                    _PositionInput(type: "Y"),
-                  ],
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Send initial position:',
+                  style: appText.titleLarge,
                 ),
-              ),
-              const StandardSeparator(),
-              BlocBuilder<GameSetUpBloc, GameSetUpState>(
-                builder: (context, state) {
-                  return SelectedContainer(
-                    text: state.direction.value,
-                  );
-                },
-              ),
-              const StandardSeparator(),
-              DirectionController(),
-              const StandardSeparator(),
-              const _FormSetUpSubmitButton()
-            ],
+                const StandardSeparator(),
+                const Form(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      _PositionInput(type: "X"),
+                      _PositionInput(type: "Y"),
+                    ],
+                  ),
+                ),
+                const StandardSeparator(),
+                BlocBuilder<GameSetUpBloc, GameSetUpState>(
+                  builder: (context, state) {
+                    return SelectedContainer(
+                      text: state.direction.value,
+                    );
+                  },
+                ),
+                const StandardSeparator(),
+                DirectionController(),
+                const StandardSeparator(),
+                const _FormSetUpSubmitButton()
+              ],
+            ),
           ),
         ),
       ),
