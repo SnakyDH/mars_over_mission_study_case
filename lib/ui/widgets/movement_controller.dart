@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mars_rover_mission/domain/entities/movement.dart';
+import 'package:mars_rover_mission/ui/blocs/rover/rover_bloc.dart';
 import 'package:mars_rover_mission/ui/widgets/controller_button.dart';
 
 class MovementController extends StatelessWidget {
@@ -24,32 +25,56 @@ class MovementController extends StatelessWidget {
     }
   }
 
+  RoverMovement _parseToMovement(Movement mov) {
+    switch (mov.name) {
+      case Movements.up:
+        return RoverMovement.forward;
+      case Movements.left:
+        return RoverMovement.left;
+      case Movements.right:
+        return RoverMovement.right;
+      default:
+        return RoverMovement.forward;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 300,
-      width: 300,
-      child: GridView.builder(
-        padding: const EdgeInsets.all(10),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-        ),
-        itemCount: 6,
-        itemBuilder: (context, index) {
-          if (index % 2 == 0) {
-            return const SizedBox();
-          }
-          return ControllerButton(
-            child: Icon(
-              getIcons(movements.elementAt(index ~/ 2)),
-              color: movements.elementAt(index ~/ 2).color,
-              size: 40,
+    return BlocBuilder<RoverBloc, RoverState>(
+      builder: (context, state) {
+        return SizedBox(
+          height: 300,
+          width: 300,
+          child: GridView.builder(
+            padding: const EdgeInsets.all(10),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
             ),
-          );
-        },
-      ),
+            itemCount: 6,
+            itemBuilder: (context, index) {
+              if (index % 2 == 0) {
+                return const SizedBox();
+              }
+              final movement = movements.elementAt(index ~/ 2);
+
+              return ControllerButton(
+                onTap: () => context.read<RoverBloc>().add(
+                      MoveRover(
+                        _parseToMovement(movement),
+                      ),
+                    ),
+                child: Icon(
+                  getIcons(movement),
+                  color: movement.color,
+                  size: 40,
+                ),
+              );
+            },
+          ),
+        );
+      },
     );
   }
 }

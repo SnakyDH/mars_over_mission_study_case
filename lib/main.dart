@@ -4,6 +4,7 @@ import 'package:mars_rover_mission/config/router/app_router.dart';
 import 'package:mars_rover_mission/config/theme/app_theme.dart';
 import 'package:mars_rover_mission/config/theme/theme_util.dart';
 import 'package:mars_rover_mission/ui/blocs/game_set_up/game_set_up_bloc.dart';
+import 'package:mars_rover_mission/ui/blocs/rover/rover_bloc.dart';
 import 'package:mars_rover_mission/ui/blocs/username/username_bloc.dart';
 
 void main() {
@@ -19,6 +20,7 @@ class BlocProviders extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => UsernameBloc()),
         BlocProvider(create: (_) => GameSetUpBloc()),
+        BlocProvider(create: (_) => RoverBloc()),
       ],
       child: const MainApp(),
     );
