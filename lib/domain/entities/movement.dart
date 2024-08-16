@@ -11,7 +11,7 @@ class Movement {
 }
 
 abstract class Movements {
-  static const String up = 'UP';
-  static const String left = 'LEFT';
-  static const String right = 'RIGHT';
+  static const String up = 'F';
+  static const String left = 'L';
+  static const String right = 'R';
 }
