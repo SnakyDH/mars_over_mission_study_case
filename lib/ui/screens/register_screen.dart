@@ -23,8 +23,8 @@ class RegisterScreen extends StatelessWidget {
             appBar: AppBar(
               backgroundColor: Colors.transparent,
             ),
-            body: SingleChildScrollView(
-              child: Center(
+            body: Center(
+              child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

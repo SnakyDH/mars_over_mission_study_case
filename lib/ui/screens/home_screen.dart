@@ -32,8 +32,8 @@ class HomeScreen extends StatelessWidget {
             context.goNamed(AppRoutesName.gameScreen);
           }
         },
-        child: SingleChildScrollView(
-          child: Center(
+        child: Center(
+          child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
