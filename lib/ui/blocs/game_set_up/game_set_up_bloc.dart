@@ -77,6 +77,13 @@ class GameSetUpBloc extends Bloc<GameSetUpEvent, GameSetUpState> {
     Emitter<GameSetUpState> emit,
   ) {
     if (state.isValid) {
+      //Check if x and y positions are greater than 20 because the grid is 20x20 due to technical and performance issues.
+      if (state.xPosition.value >= 20) {
+        add(XPositionChanged(state.xPosition.value ~/ 10));
+      }
+      if (state.yPosition.value >= 20) {
+        add(YPositionChanged(state.yPosition.value ~/ 10));
+      }
       emit(state.copyWith(status: FormzSubmissionStatus.success));
       return;
     }
