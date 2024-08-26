@@ -23,6 +23,7 @@ class SelectedContainer extends StatelessWidget {
         child: Text(
           text,
           style: appText.headlineMedium,
+          textAlign: TextAlign.center,
         ),
       ),
     );
