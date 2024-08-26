@@ -9,6 +9,7 @@ class Mars {
   Mars() {
     _generateMars();
   }
+
   int _randomNumber() {
     return Random().nextInt(size);
   }

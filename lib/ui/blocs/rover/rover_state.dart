@@ -10,7 +10,7 @@ final class RoverState extends Equatable {
   });
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [status, movements];
 
   RoverState copyWith({
     RoverStatus? status,

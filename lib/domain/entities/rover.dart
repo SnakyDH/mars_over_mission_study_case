@@ -4,15 +4,17 @@ import 'package:mars_rover_mission/ui/blocs/rover/rover_bloc.dart';
 
 class Rover {
   late Mars mars;
-  late int x;
-  late int y;
+  // * define the variables as int? because using this value (null) we can validate if the rover has been deployed
+  int? x;
+  int? y;
   late String direction;
 
-  Rover({
-    required this.mars,
-  });
+  Rover({required this.mars});
 
-  void deployRoverOnSelectedPosition(x, y, direction) {
+  void deployRoverOnSelectedPosition(int x, int y, String direction) {
+    this.x = x;
+    this.y = y;
+    this.direction = direction;
     mars.saveRover(x, y, direction);
   }
 
@@ -32,13 +34,13 @@ class Rover {
   bool _moveRoverForward() {
     switch (direction) {
       case Directions.north:
-        return _moveToNewPosition(x - 1, y);
+        return _moveToNewPosition(x! - 1, y!);
       case Directions.east:
-        return _moveToNewPosition(x, y + 1);
+        return _moveToNewPosition(x!, y! + 1);
       case Directions.south:
-        return _moveToNewPosition(x + 1, y);
+        return _moveToNewPosition(x! + 1, y!);
       case Directions.west:
-        return _moveToNewPosition(x, y - 1);
+        return _moveToNewPosition(x!, y! - 1);
     }
     return false;
   }
@@ -47,16 +49,16 @@ class Rover {
     switch (direction) {
       case Directions.north:
         direction = Directions.west;
-        return _moveToNewPosition(x, y - 1);
+        return _moveToNewPosition(x!, y! - 1);
       case Directions.east:
         direction = Directions.north;
-        return _moveToNewPosition(x - 1, y);
+        return _moveToNewPosition(x! - 1, y!);
       case Directions.south:
         direction = Directions.east;
-        return _moveToNewPosition(x, y + 1);
+        return _moveToNewPosition(x!, y! + 1);
       case Directions.west:
         direction = Directions.south;
-        return _moveToNewPosition(x + 1, y);
+        return _moveToNewPosition(x! + 1, y!);
     }
     return false;
   }
@@ -65,21 +67,21 @@ class Rover {
     switch (direction) {
       case Directions.north:
         direction = Directions.east;
-        return _moveToNewPosition(x, y + 1);
+        return _moveToNewPosition(x!, y! + 1);
       case Directions.east:
         direction = Directions.south;
-        return _moveToNewPosition(x + 1, y);
+        return _moveToNewPosition(x! + 1, y!);
       case Directions.south:
         direction = Directions.west;
-        return _moveToNewPosition(x, y - 1);
+        return _moveToNewPosition(x!, y! - 1);
       case Directions.west:
         direction = Directions.north;
-        return _moveToNewPosition(x - 1, y);
+        return _moveToNewPosition(x! - 1, y!);
     }
     return false;
   }
 
-  bool _moveToNewPosition(x, y) {
+  bool _moveToNewPosition(int x, int y) {
     if (!_isAnObstacle(x, y)) {
       mars.removeRover(x, y);
       this.x = x;
@@ -87,7 +89,8 @@ class Rover {
       mars.saveRover(x, y, direction);
       return true;
     } else {
-      // todo: manage collision
+      mars.removeRover(x, y);
+      mars.saveRover(x, y, direction);
       return false;
     }
   }

@@ -61,8 +61,8 @@ class MovementController extends StatelessWidget {
 
               return ControllerButton(
                 onTap: () => context.read<RoverBloc>().add(
-                      MoveRover(
-                        _parseToMovement(movement),
+                      AddMovement(
+                        movement: _parseToMovement(movement),
                       ),
                     ),
                 child: Icon(
